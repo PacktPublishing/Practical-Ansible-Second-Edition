@@ -1,0 +1,7 @@
+---
+- hosts: routers
+  gather_facts: False
+  tasks:
+  - name: Gather IOS facts
+    cisco.ios.ios_facts:
+      gather_subset: all
