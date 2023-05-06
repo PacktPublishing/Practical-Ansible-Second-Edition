@@ -1,0 +1,72 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Ensure the SSH key is present on OpenStack
+    openstack.cloud.keypair:
+      state: present
+      name: ansible_key
+      public_key_file: "{{ '~' | expanduser }}/.ssh/id_rsa.pub"
+  - name: Ensure we have a CentOS image
+    ansible.builtin.get_url:
+      url: http://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-GenericCloud-9-20230424.0.x86_64.qcow2
+      dest: /tmp/CentOS-Stream-GenericCloud-9-20230424.0.x86_64.qcow2
+  - name: Ensure the CentOS image is in OpenStack
+    openstack.cloud.image:
+      name: centos
+      container_format: bare
+      disk_format: qcow2
+      state: present
+      filename: /tmp/CentOS-Stream-GenericCloud-9-20230424.0.x86_64.qcow2
+  - name: Ensure the Network is present
+    openstack.cloud.network:
+      state: present
+      name: mynet
+      external: False
+      shared: False
+      register: net_out
+  - name: Ensure the Subnetwork is present
+    openstack.cloud.subnet:
+      state: present
+      network_name: "{{ net_out.id }}"
+      name: mysubnet
+      ip_version: 4
+      cidr: 192.168.0.0/24
+      gateway_ip: 192.168.0.1
+      enable_dhcp: yes
+      dns_nameservers:
+      - 8.8.8.8
+  - name: Ensure the Router is present
+    openstack.cloud.router:
+      state: present
+      name: myrouter
+      network: nova
+      external_fixed_ips:
+      - subnet: nova
+      interfaces:
+      - mysubnet
+  - name: Ensure the Security Group is present
+    openstack.cloud.security_group:
+      state: present
+      name: mysg
+  - name: Ensure the Security Group allows ICMP traffic
+    openstack.cloud.security_group_rule:
+      security_group: mysg
+      protocol: icmp
+      remote_ip_prefix: 0.0.0.0/0
+  - name: Ensure the Security Group allows SSH traffic
+    openstack.cloud.security_group_rule:
+      security_group: mysg
+      protocol: tcp
+      port_range_min: 22
+      port_range_max: 22
+      remote_ip_prefix: 0.0.0.0/0
+  - name: Ensure the Instance exists
+    openstack.cloud.server:
+      state: present
+      name: myInstance
+      image: centos
+      flavor: m1.small
+      security_groups: mysg
+      key_name: ansible_key
+      nics:
+      - net-id: "{{ net_out.id }}"
