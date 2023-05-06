@@ -1,0 +1,11 @@
+---
+- name: Play to demonstrate asynchronous tasks
+  hosts: frontends
+  become: true
+
+  tasks:
+    - name: A simulated long running task
+      shell: "sleep 20"
+      async: 30
+      poll: 5
+
