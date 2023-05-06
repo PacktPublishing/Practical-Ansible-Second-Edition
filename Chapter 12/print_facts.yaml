@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+  - name: Display all variables/facts known for a host
+    ansible.builtin.debug:
+      var: hostvars[inventory_hostname]

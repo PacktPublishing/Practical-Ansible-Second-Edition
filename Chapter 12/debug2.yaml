@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  tasks:
+  - ansible.builtin.shell: /usr/bin/uptime
+    register: result
+  - ansible.builtin.debug:
+      var: result
+      verbosity: 2

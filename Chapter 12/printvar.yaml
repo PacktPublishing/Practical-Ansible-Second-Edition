@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  tasks:
+  - ansible.builtin.debug:
+      var: variable
