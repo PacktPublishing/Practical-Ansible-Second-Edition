@@ -11,7 +11,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = ''' 
 ---
 module: remote_filecopy
-version_added: "2.9"
+version_added: "2.15"
 short_description: Copy a file on the remote host
 description:
   - The remote_copy module copies a file on the remote host from a given source to a provided destination.
