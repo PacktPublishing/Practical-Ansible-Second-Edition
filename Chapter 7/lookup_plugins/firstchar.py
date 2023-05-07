@@ -1,3 +1,4 @@
+# (c) 2023, Daniel Oh <daniel.oh@example.com>
 # (c) 2020, James Freeman <james.freeman@example.com>
 # (c) 2012, Daniel Hokka Zakrisson <daniel@hozac.com>
 # (c) 2017 Ansible Project
@@ -7,8 +8,8 @@ __metaclass__ = type
 
 DOCUMENTATION = """
     lookup: firstchar
-    author: James Freeman <james.freeman@example.com>
-    version_added: "2.9"
+    author: James Freeman <daniel.oh@example.com>
+    version_added: "2.15"
     short_description: read the first character of file contents
     description:
         - This lookup returns the first character of the contents from a file on the Ansible controller's file system.
