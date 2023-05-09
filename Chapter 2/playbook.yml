@@ -1,0 +1,19 @@
+---
+- name: My first Ansible playbook
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Install/Update to the latest of Apache Web Server
+    ansible.builtin.apt:
+      name: apache2
+      state: latest
+    notify:
+      - Restart the Apache Web Server
+
+  handlers:
+  - name: Restart the Apache Web Server
+    ansible.builtin.service:
+      name: apache2
+      state: restarted
+

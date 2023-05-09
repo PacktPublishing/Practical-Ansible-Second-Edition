@@ -1,0 +1,4 @@
+---
+- ansible.builtin.import_playbook: frontends-na.yml
+- ansible.builtin.import_playbook: appservers-emea.yml
+

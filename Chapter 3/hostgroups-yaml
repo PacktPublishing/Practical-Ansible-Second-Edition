@@ -1,0 +1,21 @@
+all:
+  hosts:
+    loadbalancer.example.org:
+  children:
+    fedora:
+      children:
+        apps:
+          hosts:
+            app01.example.org:
+            app02.example.org:
+        databases:
+          hosts:
+            db01.example.org:
+            db02.example.org:
+    ubuntu:
+      children:
+        frontends:
+          hosts:
+            web01.example.org:
+            web02.example.org:
+

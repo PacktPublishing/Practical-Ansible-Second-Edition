@@ -1,0 +1,15 @@
+---
+- name: Jinja2 filtering demo 2
+  hosts: localhost
+  vars:
+    tags:
+      - key: job
+        value: developer
+      - key: language
+        value: java
+
+  tasks:
+    - name: Filter the tags variable through items2dict
+      ansible.builtin.debug:
+        msg: '{{ tags | items2dict }}'
+

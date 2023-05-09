@@ -1,0 +1,2 @@
+plugin: community.general.cobbler
+url: "http://cobbler.example.org/cobbler_api"

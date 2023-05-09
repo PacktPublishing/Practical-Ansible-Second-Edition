@@ -1,0 +1,24 @@
+all:
+  hosts:
+    loadbalancer.example.com:
+  children:
+    centos:
+      children:
+        apps:
+          hosts:
+            app01.example.com:
+            app02.example.com:
+        databases:
+          hosts:
+            dbms01.example.com:
+            dbms02.example.com:
+    ubuntu:
+      children:
+        frontends:
+          hosts:
+            frt01.example.com:
+              https_port: 8444
+            frt02.example.com:
+          vars:
+            https_port: 8443
+            lb_vip: lb.example.com

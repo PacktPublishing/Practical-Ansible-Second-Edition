@@ -1,0 +1,8 @@
+frontends:
+  hosts:
+    web01.example.org:
+      https_port: 8444
+    web02.example.org:
+  vars:
+    https_port: 8443
+    lb_vip: lb.example.org

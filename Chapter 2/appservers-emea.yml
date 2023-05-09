@@ -1,0 +1,9 @@
+---
+- hosts: appservers_emea_zone
+  remote_user: james
+  gather_facts: no
+
+  tasks:
+    - name: simple connection test
+      ansible.builtin.ping:
+

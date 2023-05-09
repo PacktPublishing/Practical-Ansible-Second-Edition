@@ -1,0 +1,12 @@
+---
+- name: Jinja2 filtering demo 3
+  hosts: localhost
+
+  vars:
+    ping_value: "{{ lookup('file', '/etc/hosts') }}"
+
+  tasks:
+    - name: Display the values obtained from the file lookup
+      ansible.builtin.debug:
+        msg: "ping value is {{ ping_value }}"
+

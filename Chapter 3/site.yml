@@ -1,0 +1,8 @@
+---
+- name: A simple playbook for demonstrating inventory patterns
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Ping each host
+      ansible.builtin.ping:

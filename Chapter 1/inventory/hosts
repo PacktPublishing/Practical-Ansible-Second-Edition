@@ -1,0 +1,8 @@
+[webservers]
+web01.example.org
+web02.example.org
+
+[apservers]
+app01.example.org
+app02.example.org
+

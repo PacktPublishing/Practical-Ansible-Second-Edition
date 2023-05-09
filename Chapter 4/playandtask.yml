@@ -1,0 +1,28 @@
+---
+- name: Play 1 - configure the frontend servers
+  hosts: frontends
+  become: yes
+
+  tasks:
+  - name: Install  the Apache package
+    yum:
+      name: httpd
+      state: latest
+  - name: Start the Apache server
+    service:
+      name: httpd
+      state: started
+
+- name: Play 2 - configure the appliation servers
+  hosts: apps
+  become: true 
+
+  tasks:
+  - name: Install Tomcat
+    yum:
+      name: tomcat
+      state: latest
+  - name: Start the Tomcat server
+    service:
+      name: tomcat
+      state: started

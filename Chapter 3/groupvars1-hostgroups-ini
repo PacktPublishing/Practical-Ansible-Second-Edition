@@ -1,0 +1,8 @@
+[frontends]
+web01.example.org
+web02.example.org
+
+[frontends:vars]
+https_port=8443
+lb_vip=lb.example.org
+

@@ -1,0 +1,5 @@
+[cobbler_webservers]
+
+[fedora:children]
+cobbler_webservers
+
