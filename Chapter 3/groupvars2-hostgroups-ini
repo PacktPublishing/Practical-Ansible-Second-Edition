@@ -1,8 +1,0 @@
-[frontends]
-web01.example.com https_port=8444
-web02.example.com
-
-[frontends:vars]
-https_port=8443
-lb_vip=lb.example.org
-
