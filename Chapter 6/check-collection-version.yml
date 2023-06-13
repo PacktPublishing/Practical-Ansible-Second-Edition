@@ -1,0 +1,10 @@
+---
+- name: Play to check collection version
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Get the version of the amazon.aws collection
+      ansible.builtin.debug:
+        msg: "amazon.aws version {{ lookup('community.general.collection_version', 'amazon.aws') }}"
+

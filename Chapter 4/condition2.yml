@@ -1,13 +1,13 @@
 ---
-- name: Play to patch only CentOS systems
+- name: Play to patch only Fedora systems
   hosts: all
   become: true
 
   tasks: 
-  - name: Patch CentOS systems
+  - name: Patch Fedora systems
     yum:
       name: httpd
       state: latest
-    when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6")
+    when: (ansible_facts['distribution'] == "Fedora" and ansible_facts['distribution_major_version'] == "35")
 
 

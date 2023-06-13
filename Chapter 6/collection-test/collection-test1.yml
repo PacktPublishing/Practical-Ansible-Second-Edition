@@ -1,0 +1,15 @@
+---
+- name: Playbook to test custom module
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Test the custom module
+      practicalansible.examples.remote_filecopy:
+        source: /tmp/foo
+        dest: /tmp/bar
+      register: testresult
+
+    - name: Print the test result data
+      ansible.builtin.debug:
+        var: testresult

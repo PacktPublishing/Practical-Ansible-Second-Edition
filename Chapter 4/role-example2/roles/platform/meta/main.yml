@@ -1,6 +1,8 @@
 ---
 dependencies:
 - role: linuxtype
-  type: "centos"
+  vars:
+    type: "fedora"
 - role: linuxtype
-  type: "ubuntu"
+  vars:
+    type: "ubuntu"

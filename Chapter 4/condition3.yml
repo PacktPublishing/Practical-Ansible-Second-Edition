@@ -1,15 +1,15 @@
 ---
-- name: Play to patch only CentOS systems
+- name: Play to test for hosts file in directory output
   hosts: localhost
   become: true
 
   tasks: 
     - name: Gather directory listing from local system
-      shell: "ls -l"
+      ansible.builtin.shell: "ls -l"
       register: shellresult
 
     - name: Alert if we find a hosts file
-      debug:
+      ansible.builtin.debug:
         msg: "Found hosts file!"
       when: '"hosts" in shellresult.stdout'
 

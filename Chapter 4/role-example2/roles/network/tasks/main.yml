@@ -1,4 +1,4 @@
 ---
 - name: Print type variable
-  debug:
+  ansible.builtin.debug:
     var: type

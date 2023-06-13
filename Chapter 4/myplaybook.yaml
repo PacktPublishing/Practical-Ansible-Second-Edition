@@ -1,12 +1,12 @@
 ---
 - hosts: frontends
-  remote_user: danieloh
+  remote_user: james
 
   tasks:
   - name: simple connection test
-    ping:
-    remote_user: danieloh
+    ansible.builtin.ping:
+    remote_user: james
 
   - name: run a simple command
-    shell: /bin/ls -al /nonexistent
+    ansible.builtin.shell: /bin/ls -al /nonexistent
     ignore_errors: True

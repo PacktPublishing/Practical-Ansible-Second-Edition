@@ -1,0 +1,6 @@
+---
+collections:
+- name: davidban77.gns3
+  version: '>1.2.0,<1.5.0'
+- marmorag.ansodium
+

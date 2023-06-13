@@ -1,0 +1,9 @@
+---
+- name: Play to demonstrate our custom lookup plugin
+  hosts: localhost
+  gather_facts: false
+ 
+  tasks:
+    - name: make a statement
+      ansible.builtin.debug:
+        msg: "{{ lookup('practicalansible.examples.firstchar', 'testdoc.txt')}}"

@@ -1,22 +1,23 @@
 ---
 - name: Handler demo 1
-  hosts: frt01.example.com
+  hosts: web01.example.org
   gather_facts: no
   become: yes
 
   handlers:
-    - name: restart chronyd
-      service:
-        name: chronyd
+    - name: restart timesyncd
+      ansible.builtin.service:
+        name: systemd-timesyncd.service
         state: restarted
       listen: "restart all services"
+
     - name: restart apache
-      service:
-        name: httpd
+      ansible.builtin.service:
+        name: apache2.service
         state: restarted
       listen: "restart all services"
 
   tasks:
     - name: restart all services
-      command: echo "this task will restart all services"
+      ansible.builtin.command: echo "this task will restart all services"
       notify: "restart all services"

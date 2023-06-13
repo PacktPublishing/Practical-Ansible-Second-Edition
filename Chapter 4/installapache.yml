@@ -1,25 +1,26 @@
 ---
 - name: Install Apache
-  hosts: frt01.example.com
+  hosts: web01.example.org
   gather_facts: no
   become: yes
 
   tasks:
     - name: Install Apache package
-      yum:
-        name: httpd
+      ansible.builtin.apt:
+        name: apache2
         state: latest
+
     - name: Open firewall for Apache
-      firewalld:
-        service: "{{ item }}"
-        permanent: yes
-        state: enabled
-        immediate: yes
+      community.general.ufw:
+        rule: allow
+        port: "{{ item }}"
+        proto: tcp
       loop:
         - "http"
         - "https"
+
     - name: Restart and enable the service
-      service:
-        name: httpd
+      ansible.builtin.service:
+        name: apache2
         state: restarted
         enabled: yes

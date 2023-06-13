@@ -1,9 +1,9 @@
 ---
 - name: Install Apache using yum
-  yum:
-    name: "httpd"
+  ansible.builtin.dnf:
+    name: httpd
     state: latest
 - name: Start the Apache server
-  service:
+  ansible.builtin.service:
     name: httpd
     state: started

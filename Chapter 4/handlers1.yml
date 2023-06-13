@@ -1,18 +1,18 @@
 ---
 - name: Handler demo 1
-  hosts: frt01.example.com
+  hosts: web01.example.org
   gather_facts: no
   become: yes
 
   tasks:
     - name: Update Apache configuration
-      template:
+      ansible.builtin.template:
         src: template.j2
-        dest: /etc/httpd/httpd.conf
+        dest: /etc/apache2/apache2.conf
       notify: Restart Apache
 
   handlers:
     - name: Restart Apache
-      service:
-        name: httpd
+      ansible.builtin.service:
+        name: apache2
         state: restarted

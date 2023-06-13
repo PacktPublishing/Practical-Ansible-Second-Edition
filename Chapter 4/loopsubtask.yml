@@ -1,6 +1,6 @@
 ---
 - name: Inner loop
-  debug:
+  ansible.builtin.debug:
     msg: "second item={{ second_item }} first item={{ item }}"
   loop:
     - 100

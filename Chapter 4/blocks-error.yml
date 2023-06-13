@@ -6,23 +6,23 @@
     - name: block to handle errors
       block:
         - name: Perform a successful task
-          debug:
+          ansible.builtin.debug:
             msg: 'Normally executing....'
         - name: Deliberately create an error
-          command: /bin/whatever
+          ansible.builtin.command: /bin/whatever
         - name: This task should not run if the previous one results in an error
-          debug:
+          ansible.builtin.debug:
             msg: 'Never print this message if the above command fails!!!!'
       rescue:
         - name: Catch the error (and perform recovery actions)
-          debug:
+          ansible.builtin.debug:
             msg: 'Caught the error'
         - name: Deliberately create another error
-          command: /bin/whatever
+          ansible.builtin.command: /bin/whatever
         - name: This task should not run if the previous one results in an error
-          debug:
+          ansible.builtin.debug:
             msg: 'Do not print this message if the above command fails!!!!'
       always:
         - name: This task always runs!
-          debug:
+          ansible.builtin.debug:
             msg: "Tasks in this part of the play will be ALWAYS executed!!!!"

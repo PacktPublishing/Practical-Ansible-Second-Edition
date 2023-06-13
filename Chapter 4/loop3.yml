@@ -1,10 +1,10 @@
 ---
 - name: Simple loop demo play
-  hosts: frt01.example.com
+  hosts: web01.example.org
 
   tasks:
     - name: Echo a value from the loop
-      command: echo "{{ item }}"
+      ansible.builtin.command: echo "{{ item }}"
       loop:
         - 1
         - 2
@@ -16,5 +16,5 @@
       register: loopresult
 
     - name: Print the results from the loop
-      debug:
+      ansible.builtin.debug:
         var: loopresult

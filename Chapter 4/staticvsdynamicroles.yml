@@ -2,7 +2,7 @@
 - hosts: frontends
 
   tasks:
-  - import_role:
+  - ansible.builtin.import_role:
       name: common
-  - include_role:
+  - ansible.builtin.include_role:
       name: approle
