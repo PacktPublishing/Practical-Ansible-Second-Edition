@@ -1,3 +1,2 @@
 [local]
 frt01.example.com ansible_connection=local
-

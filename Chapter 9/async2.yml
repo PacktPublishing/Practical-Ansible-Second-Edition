@@ -16,4 +16,3 @@
       register: async_result
       until: async_result.finished
       retries: 30
-
