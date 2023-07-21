@@ -10,5 +10,5 @@
       register: testresult
 
     - name: Print the test result data
-      debug:
+      ansible.builtin.debug:
         var: testresult  

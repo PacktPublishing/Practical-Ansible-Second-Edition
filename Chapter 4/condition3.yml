@@ -1,7 +1,6 @@
 ---
 - name: Play to test for hosts file in directory output
   hosts: localhost
-  become: true
 
   tasks: 
     - name: Gather directory listing from local system

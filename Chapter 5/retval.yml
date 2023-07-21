@@ -4,9 +4,9 @@
 
   tasks:
     - name: Perform a simple module based task
-      ping:
+      ansible.builtin.ping:
       register: pingresult
 
     - name: Display the result
-      debug:
+      ansible.builtin.debug:
         var: pingresult
