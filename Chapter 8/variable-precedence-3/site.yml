@@ -6,4 +6,3 @@
     - name: Display the value of our inventory variable
       debug:
         var: http_port
-

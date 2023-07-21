@@ -1,0 +1,20 @@
+---
+version: 3
+
+images:
+  base_image:
+    name: quay.io/centos/centos:stream9
+
+dependencies:
+  ansible_core:
+    package_pip: ansible-core==2.15.1
+  ansible_runner:
+    package_pip: ansible-runner==2.3.3
+  python:
+    - pywinrm
+  system:
+    - iputils [platform:rpm]
+  galaxy:
+    collections:
+      - community.windows
+      - ansible.utils
