@@ -1,5 +1,5 @@
 ---
-- name: Play using best practise directory structure
+- name: Play using best practice directory structure
   hosts: all
 
   tasks:
