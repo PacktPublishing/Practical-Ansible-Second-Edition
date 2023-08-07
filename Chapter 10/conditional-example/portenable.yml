@@ -4,8 +4,8 @@
 
   tasks:
   - name: Enable swp2 if it is disabled
-    ansible.community.nclu:
+    community.network.nclu:
       commands:
       - add int swp2
-      commit: yes
-    when: ansible_swp2.active == false
+      commit: true
+    when: not ansible_swp2.active
